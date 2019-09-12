@@ -21,7 +21,7 @@
 				echo "<td class='text-center'>".$r->tgl_nd."</td>";
 				//echo "<td class='text-center'><buton class='btn btn-info btn-xs' id='tmb_cetak_nd' data-id_peminjaman='".$r->id_peminjaman."'>Cetak ND</button></td>";
 				
-				echo "<td class='text-center'><a href='".base_url('/pemberkasan/cetakND/')."/".$r->id_peminjaman."' class='btn btn-xs btn-info'>Cetak ND</a></td>";
+				echo "<td class='text-center'><a href='".base_url('/pemberkasan/cetakND/')."/".$r->id_peminjaman."' class='btn btn-xs btn-info' target='_blank'>Cetak ND</a></td>";
 				
 				if($r->tgl_selesai == '0000-00-00 00:00:00' || $r->tgl_selesai == null){
 					echo "<td class='text-center'>Proses</td>";

@@ -48,10 +48,12 @@ ul{
 				
 			foreach($menunye as $main){
 				// Query untuk mencari data sub menu
-				if($this->session->userdata['role'] == "0"){
-					$sub_menu = $this->db->query("SELECT * FROM tb_menu WHERE id_parent = '".$main->id_menu."' AND aktif = '1' AND admin = '".$this->session->userdata['role']."' ORDER BY CAST(id_parent AS UNSIGNED),CAST(id_menu AS UNSIGNED)");
-				}else{
-					$sub_menu = $this->db->query("SELECT * FROM tb_menu WHERE id_parent = '".$main->id_menu."' AND aktif = '1' ORDER BY CAST(id_parent AS UNSIGNED),CAST(id_menu AS UNSIGNED)");
+				if($this->session->userdata['role'] == "2"){
+					/* Menu Arsiparis */
+					$sub_menu = $this->db->query("SELECT * FROM tb_menu WHERE id_parent = '".$main->id_menu."' AND aktif = '1' AND admin = '1' ORDER BY CAST(id_parent AS UNSIGNED),CAST(id_menu AS UNSIGNED)");
+				}elseif($this->session->userdata['role'] == "3"){
+					/* Menu Peminjam */
+					$sub_menu = $this->db->query("SELECT * FROM tb_menu WHERE id_parent = '".$main->id_menu."' AND aktif = '1' AND admin = '0' ORDER BY CAST(id_parent AS UNSIGNED),CAST(id_menu AS UNSIGNED)");
 				}
 				// periksa apakah ada sub menu
 				if ($sub_menu->num_rows() > 0) {

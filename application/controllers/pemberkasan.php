@@ -73,23 +73,27 @@ Class Pemberkasan extends CI_Controller{
 			
 			$ids_berkas = $this->input->post("ids_berkas");
 			
+			//Jika ada koma di variable kiriman POST..
 			if(strpos($ids_berkas,",") > 0){
 				$xpl_berkas = explode(",",$ids_berkas);
 				
 				foreach($xpl_berkas as $i){
 					$this->model_pemberkasan->simpanDetail($id_peminjaman, $i);
+					$this->model_pemberkasan->simpanStatusDipinjam($i);
 				}
+			//Bila tidak ada..
 			}elseif(strpos($ids_berkas,",") == 0){
 				$this->model_pemberkasan->simpanDetail($id_peminjaman, $ids_berkas);
+				$this->model_pemberkasan->simpanStatusDipinjam($ids_berkas);
 			}
 			
 			$array = array("success" => "<div class='alert alert-success'>Berhasil</div>");
 			
 		}else{
 			$array = array(
-			"error" => true,
-			"no_nd_error"  => form_error("no_nd"),
-			"tgl_nd_error" => form_error("tgl_nd")
+				"error" => true,
+				"no_nd_error"  => form_error("no_nd"),
+				"tgl_nd_error" => form_error("tgl_nd")
 			);
 		}
 		

@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "auth";
+$route['default_controller'] = "pemberkasan";
 $route['404_override'] = 'er4044';
 
 

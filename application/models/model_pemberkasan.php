@@ -140,6 +140,10 @@ Class Model_pemberkasan extends CI_Model{
 			
 		return $q->result();			
 	}
-
-
+	
+	public function simpanStatusDipinjam($id_berkas){
+		$query = $this->db->query("UPDATE tb_berkas SET status ='1' WHERE id_berkas = ".$id_berkas);
+		
+	}
+	
 }

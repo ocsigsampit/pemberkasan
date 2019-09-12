@@ -85,7 +85,7 @@ $('.pilihan_radio').iCheck({
 							<div class="form-group">
 								<label  class="col-sm-4 col-lg-2 control-label">Tanggal Nota Dinas</label>
 								<div class="col-sm-4 col-lg-2">
-									<input class="form-control text-center" name="tgl_nd" id="tgl_nd"/>
+									<input class="form-control text-center datepicker" name="tgl_nd" id="tgl_nd" data-pmu-format="Y-m-d"/>
 								</div>
 								<span id="tgl_nd_error" class="text-danger"></span>
 							</div>

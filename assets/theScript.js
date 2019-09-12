@@ -1,6 +1,13 @@
 $(document).ready(function(){
 	var total = 0;
 	
+	$('.datepicker').datepicker({
+		format: 'yyyy-mm-dd',
+		//startDate: '-3d'
+		autoclose: true,
+		todayHighlight: true
+	});
+	
 	$('input').iCheck({
 		checkboxClass: 'icheckbox_square',
 		radioClass: 'iradio_square',
@@ -51,7 +58,7 @@ $(document).ready(function(){
 						$(document).trigger('icheck');
 						//-----------------------------------------------//
 					}else{
-						$("#wadah").html("DATA TIDAK DITEMUKAN !");
+						$("#wadah").html("DATA TIDAK DITEMUKAN / BERKAS SEDANG DIPINJAM !");
 						$("#load_diplay").html("Done !");
 					}
 				}
@@ -102,34 +109,6 @@ $(document).ready(function(){
 		$("#modal_form_peminjaman").modal("show");
 	});
 	
-	/*
-	$("#tmb_simpan_formulir").click(function(){
-		var ids_berkas = $("#wadah_id_berkas").val();
-		var no_nd      = $("#no_nd").val();
-		var tgl_nd     = $("#tgl_nd").val();
-		
-		if(confirm("Yakin ?")){
-			$.ajax({
-				type : "POST",
-				url  : theSite + "/pemberkasan/simpan_formulir",
-				data : "no_nd=" + no_nd + "&tgl_nd=" + tgl_nd + "&ids_berkas=" + ids_berkas,
-				success : function(hasil){
-					var pesan = "";
-					if(hasil.substr(0,1) == "1"){
-						pesan += "Data Induk berhasil disimpan\n";
-						if(hasil.substr(1,1) == "1"){
-							pesan += "Data Detail berhasil disimpan";
-						}
-					}
-					
-					alert(pesan);
-					$(document).ajaxStop(function() { location.reload(true); });
-				}
-			});
-		}
-	});
-	*/
-	
 	$("#tmb_simpan_formulir").click(function(e){
 		e.preventDefault();
 		
@@ -159,6 +138,7 @@ $(document).ready(function(){
 					
 					if(data2.success){
 						$("#success_message").html(data2.success);
+						$("#modal_form_peminjaman").modal("hide");
 					}
 					
 				}
